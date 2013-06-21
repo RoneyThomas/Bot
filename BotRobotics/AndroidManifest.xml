@@ -7,6 +7,8 @@
     <uses-sdk
         android:minSdkVersion="5"
         android:targetSdkVersion="17" />
+        
+    <uses-feature android:name="android.hardware.bluetooth" android:required="false" />
     
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
     <uses-permission android:name="android.permission.BLUETOOTH" />
