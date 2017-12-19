@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -115,51 +116,57 @@ public class ButtonActivity extends AppCompatActivity {
         Button rytButton = findViewById(R.id.button3);
         Button lftButton = findViewById(R.id.button4);
 
-        uppButton.setOnClickListener(new OnClickListener() {
-            public void onClick(View v) {
-                // Send a message using content of the edit text widget
-                sendMessage("1");
+        uppButton.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                if (motionEvent.getAction()==MotionEvent.ACTION_DOWN){
+                    sendMessage("1");
+                } else if (motionEvent.getAction()==MotionEvent.ACTION_UP){
+                    sendMessage("5");
+                }
+                return false;
             }
         });
 
-        dwnButton.setOnClickListener(new OnClickListener() {
-            public void onClick(View v) {
-                // Send a message using content of the edit text widget
-                sendMessage("2");
+        dwnButton.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                if (motionEvent.getAction()==MotionEvent.ACTION_DOWN){
+                    sendMessage("2");
+                } else if (motionEvent.getAction()==MotionEvent.ACTION_UP){
+                    sendMessage("5");
+                }
+                return false;
             }
         });
 
-        rytButton.setOnClickListener(new OnClickListener() {
-            public void onClick(View v) {
-                // Send a message using content of the edit text widget
-                sendMessage("3");
+        rytButton.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                if (motionEvent.getAction()==MotionEvent.ACTION_DOWN){
+                    sendMessage("3");
+                } else if (motionEvent.getAction()==MotionEvent.ACTION_UP){
+                    sendMessage("5");
+                }
+                return false;
             }
         });
 
-        lftButton.setOnClickListener(new OnClickListener() {
-            public void onClick(View v) {
-                // Send a message using content of the edit text widget
-                sendMessage("4");
+        lftButton.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                if (motionEvent.getAction()==MotionEvent.ACTION_DOWN){
+                    sendMessage("2");
+                } else if (motionEvent.getAction()==MotionEvent.ACTION_UP){
+                    sendMessage("5");
+                }
+                return false;
             }
         });
 
         // Initialize the BluetoothChatService to perform bluetooth connections
         mChatService = new BluetoothChatService(mHandler);
 
-    }
-
-    @Override
-    public synchronized void onPause() {
-        super.onPause();
-        if (D)
-            Log.e(TAG, "- ON PAUSE -");
-    }
-
-    @Override
-    public void onStop() {
-        super.onStop();
-        if (D)
-            Log.e(TAG, "-- ON STOP --");
     }
 
     @Override
